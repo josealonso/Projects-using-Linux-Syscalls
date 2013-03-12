@@ -8,7 +8,17 @@ at my University (http://www.uah.es).
                         
 Files: prac7.h, escritor.c, lector.c, makefile_ipc.
 
-Description:
+Description: Two cyclic processes are going to be created. One is called the writter and the other one
+is the reader. Both processes will use a syncronyzation mechanism, to avoid simultaneous accesses to 
+the same data. The writer process will try to write the data input from the keyboard onto a shared memory area.
+Then, the reader process will transform those data into uppercase letters. When the user enters the "Z" letter, 
+the writer will finish its task and will launch the reader process, so that the data stored on the shared memory
+area will be read. To finish, the reader will write the transformed data on the screen. Then, the cycle will be 
+repeated until the user exits from the program, by pressing Ctrl^C. 
+
+
+To guarantee that the reader will not be executed until the writer finishes, two binaries semaphores are used, one per process. The writer is the parent process, since it is the first one to be executed, and the reader is the child process. Therefore, in the beginning the parent semaphore has a value of one (open access), while the child semaphore has a value of zero (blocked access). Each process, right before executing itself, decrements its semaphore value. And right before finishing its execution, each process increments its semaphore value, allowing the execution of the other process.
+ 
 
 To compile this project, type:
 
