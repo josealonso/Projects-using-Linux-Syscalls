@@ -1,0 +1,17 @@
+# Makefile 
+
+CXX = gcc
+WRITER = escritor     # It writes to the shared memory area, not to the screen.  
+READER = lector       # It reads the text saved in the shared memory area, processes it and send the results to the screen. 
+
+all: $(WRITER) $(READER) 
+##all: escritor lector 
+
+$(WRITER): escritor.c prac7.h
+	$(CXX) -Wall escritor.c -o $(WRITER)
+$(READER): lector.c prac7.h
+	$(CXX) -Wall lector.c -o $(READER) 
+
+clean:              
+	-rm -f *.o $(READER) $(WRITER)
+
