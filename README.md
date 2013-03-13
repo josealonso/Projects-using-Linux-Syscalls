@@ -4,6 +4,23 @@ Projects-using-Linux-Syscalls
 In this repository, there will be small projects, most of them required for the Operating System Course 
 at my University (http://www.uah.es).
 
+
+                        O P E N I N G   A   F I L E
+
+Files: programa.c, buscar.c, buscar.h, makefile_count. 
+
+Description: Very short project, to get familiar with the system calls structure, with the GNU make and with the command for creating a static library.
+This application counts the number of ocurrences of the character given as the second parameter, 
+ inside the file given as the first parameter.
+
+
+To compile this project, type:
+
+make -f makefile_count
+
+And the executable called "busqueda" will be created.
+
+
                         B A S I C  I P C
                         
 Files: prac7.h, escritor.c, lector.c, makefile_ipc.
