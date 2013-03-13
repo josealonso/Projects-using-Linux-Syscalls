@@ -1,0 +1,22 @@
+
+# MAKEFILE 
+
+PROJ = busqueda               # Name of the executable file
+all: $(PROJ)
+$(PROJ):programa.o libp4.a   
+	gcc -Wall -o $(PROJ) programa.o libp4.a
+
+programa.o: programa.c buscar.h   # The header file is not needed here
+	gcc -Wall -o programa.o -c programa.c  # with "-c", the compiler does not link, only compile.
+
+libp4.o: buscar.c buscar.h        # The header file is not needed here
+	gcc -Wall -o libp4.o -c buscar.c
+
+libp4.a: libp4.o
+	ar rs libp4.a libp4.o     # A static library is created
+	-rm -f libp4.o
+
+clean:
+	-rm -f *.o *.a $(PROJ)
+
+# The option -Wall shows the compiler warnings messages.
